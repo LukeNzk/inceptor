@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<h1 class="fw-bold mb-4" style="color: #e6edf3;">Posts</h1>
+
+{% for post in posts %}
+<div class="post-card p-4 mb-3">
+  <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-2">
+    <h2 class="h5 mb-0">
+      <a class="post-title-link" href="posts/{{ post.slug }}/">{{ post.title }}</a>
+    </h2>
+    <div class="d-flex flex-wrap gap-1">
+      {% for tag in post.tags %}
+      <span class="badge tag-badge">{{ tag }}</span>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="post-meta mb-2">{{ post.date }}</div>
+  {% if post.excerpt %}
+  <p class="mb-0 post-meta">{{ post.excerpt | striptags | truncate(220) }}</p>
+  {% endif %}
+</div>
+{% else %}
+<p class="post-meta">No posts yet. Run <code>python build.py new "Post Title"</code> to create one.</p>
+{% endfor %}
+{% endblock %}
