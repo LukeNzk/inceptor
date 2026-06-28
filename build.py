@@ -21,6 +21,7 @@ POSTS_DIR = ROOT / "posts"
 DIST_DIR = ROOT / "dist"
 TEMPLATES_DIR = ROOT / "templates"
 POSTS_XML = ROOT / "posts.xml"
+PUBLIC_DIR = ROOT / "public"
 
 
 def parse_frontmatter(text: str) -> tuple[dict[str, str], str]:
@@ -88,6 +89,11 @@ def build(verbose: bool = False) -> None:
 
     DIST_DIR.mkdir(exist_ok=True)
     (DIST_DIR / "posts").mkdir(exist_ok=True)
+
+    if PUBLIC_DIR.exists():
+        shutil.copytree(PUBLIC_DIR, DIST_DIR, dirs_exist_ok=True)
+        if verbose:
+            print(f"  public/ → dist/")
 
     ctx = {"pygments_css": pygments_css}
 
