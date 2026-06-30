@@ -1,6 +1,6 @@
 # Inceptor blog generator
 
-Tool to generate static blog website, that with lightspeed loadtime.
+Tool to generate static blog websites, that have lightspeed loadtime.
 
 # Usage
 ```sh
