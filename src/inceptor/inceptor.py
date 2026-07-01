@@ -15,7 +15,7 @@ import markdown as md_lib
 from jinja2 import Environment, FileSystemLoader
 from pygments.formatters import HtmlFormatter
 
-ROOT = Path(__file__).parent
+ROOT = Path("data").absolute()
 POSTS_DIR = ROOT / "posts"
 DIST_DIR = ROOT / "dist"
 TEMPLATES_DIR = ROOT / "templates"
